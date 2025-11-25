@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/product_list_screen.dart'; // Import screen yang baru dibuat
 
 void main() {
   runApp(const SmartCashierApp());
@@ -16,9 +17,8 @@ class SmartCashierApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const Scaffold(
-        body: Center(child: Text("Aplikasi Kasir Siap!")),
-      ),
+      // Panggil Screen Utama di sini
+      home: const ProductListScreen(),
     );
   }
 }
