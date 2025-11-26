@@ -6,6 +6,11 @@ class Product {
   final int stock;
   final String? image;
 
+  // Getter for price as double
+  double get priceAsDouble {
+    return double.tryParse(price) ?? 0.0;
+  }
+
   // Constructor
   const Product({
     required this.id,

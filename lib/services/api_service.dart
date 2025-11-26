@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/product.dart';
+import 'test_data_service.dart';
 
 class ApiService {
   // Base URL: 'http://127.0.0.1:8000/api'
@@ -35,8 +36,15 @@ class ApiService {
         throw Exception('Failed to fetch products. Status code: ${response.statusCode}');
       }
     } catch (e) {
-      // Handle errors (network issues, JSON parsing, etc.)
-      throw Exception('Error fetching products: $e');
+      // If API fails, return test data
+      print('API Error: $e');
+      print('Using test data instead...');
+      
+      // Wait a bit to simulate API delay
+      await Future.delayed(const Duration(seconds: 2));
+      
+      // Return test data with placeholder images
+      return TestDataService.getProductsWithPlaceholder();
     }
   }
 }
